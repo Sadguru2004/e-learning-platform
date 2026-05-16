@@ -1,11 +1,17 @@
 services:
   - type: web
     name: e-learning-backend
-    runtime: image
-    repo: https://github.com/Sadguru2004/e-learning-platform.git
+    runtime: docker
+    repo: https://github.com/Sadguru2004/e-learning-platform
     branch: main
-    buildCommand: cd backend && mvn clean package -DskipTests
-    startCommand: cd backend && java -jar target/*.jar
+    rootDir: Backend/e-learning
+    dockerfilePath: Dockerfile
     envVars:
+      - key: DB_URL
+        value: jdbc:mysql://sql.freedb.tech:3306/freedb_ZmeeXLyE?useSSL=true
+      - key: DB_USERNAME
+        value: u_Qv30sn
+      - key: DB_PASSWORD
+        value: KZWPKdN7K7Wx
       - key: SPRING_PROFILES_ACTIVE
         value: production
